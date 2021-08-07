@@ -37,36 +37,36 @@ describe("leetEncoder",()=>{
 
 // b) Create the function that makes the test pass.
 
-//I actually ran into this problem the other day where we wanted to swap the symbol in an array with their corresponding symbols.
-// ruby has a really cool method #tr that works on strings. No luck finding one like that for javascript. so instead we're gonna iterate through the string characters and, if the character is special, replace it with a number.
+//I actually ran into this problem the other day where we wanted to swap the (dna) symbols in an array with their corresponding symbols.
+// ruby has a really cool method #tr that works on strings. No luck finding one like that for javascript. 
+//so instead we're gonna iterate through the string characters and, if the character is special, replace it with a number.
+  //split into an array so we can map, then join back up.
+//took this out of the function when I refactored.
+    //if the letter exists in the object, replace it, otherwise return the letter
+    // if(typeof special_words[c.toLowerCase()] == "number"){
+    //   return special_words[c.toLowerCase()]
+    // }
 
+//there should be a way to check if the character exists in the object. arrays can use the includes() method.
+// we can check to see if a key is 'in' an object.
 
-
+//creating an object with the chosen letters as keys.
+//that way we can just look for the replacement using the right key.
 
 
 const leetEncoder =(string) =>{
-  //creating an object with the chosen letters as keys.
-  //that way we can just look for the replacement using the right key.
-  const special_words = {
+  
+  const special_letters = {
     "a":4,
     "e":3,
     "i":1,
     "o":0
   } 
-  //split into an array so we can map, then join back up.
-  const result =  string.split("").map((c) =>{
 
-    //if the letter exists in the object, replace it, otherwise return the letter
-    if(typeof special_words[c.toLowerCase()] == "number"){
-      return special_words[c.toLowerCase()]
-    }
-
-    return c
-
+  return  string.split("").map((c) =>{
+    return c.toLowerCase() in special_letters? special_letters[c.toLowerCase()] : c
   }).join("")
 
-  // return joined string
-  return result
 }
 
 
@@ -82,8 +82,55 @@ describe("letterFilter",()=>{
 
   it("removes words that don't contain the chosen letter",()=>{
     expect(letterFilter(arrayOfWords1)).toEqual(output1)
-    expect(letterFilter(arrayOfWords2)).toEqual(output2)
     //the order doesn't matter here, so gonna look for a test that only cares whether the array contains what we want it to
+    //arrayContaining() works, just a strange syntax
+    expect(letterFilter(arrayOfWords1)).toEqual(expect.arrayContaining(output1))
+    //-------------------------//
+    //THESE ARE ALL BAD TESTS
+    //-------------------------//
+
+    // //this works...
+    // expect(letterFilter(arrayOfWords1)).toContainEqual(...output1)
+    // //same as this one...
+    // expect(letterFilter(arrayOfWords1)).toContainEqual("Apple", "Banana", "Orange")
+    // //this also works...
+    // expect(letterFilter(arrayOfWords1)).toContainEqual("Apple", "Banana")
+    // //this also works...
+    // expect(letterFilter(arrayOfWords1)).toContainEqual("Banana","Apple")
+    // //as does this...
+    // expect(letterFilter(arrayOfWords1)).toContainEqual(...arrayOfWords1)
+    // //and this...
+    // expect(letterFilter(arrayOfWords1)).toContainEqual("Apple", "Banana", "Plum", "Orange", "Kiwi")
+    // //and this...!??!
+    // expect(letterFilter(arrayOfWords1)).toContainEqual("Apple", "Banoffee")
+
+
+
+    //this works...
+    // expect(letterFilter(arrayOfWords1)).toContain(...output1)
+    // //same as this one...
+    // expect(letterFilter(arrayOfWords1)).toContain("Apple", "Banana", "Orange")
+    // //this also works...
+    // expect(letterFilter(arrayOfWords1)).toContain("Apple", "Banana")
+    // //this also works...
+    // expect(letterFilter(arrayOfWords1)).toContain("Banana","Apple")
+    // //as does this...
+    // expect(letterFilter(arrayOfWords1)).toContain(...arrayOfWords1)
+    // //and this...
+    // expect(letterFilter(arrayOfWords1)).toContain("Apple", "Banana", "Plum", "Orange", "Kiwi")
+    // //and this...!??!
+    // expect(letterFilter(arrayOfWords1)).toContain("Apple", "Banoffee")
+    //but not this. the test expects "Banoffee" but receives an array.
+    // expect(letterFilter(arrayOfWords1)).toContain("Banoffee","Apple")
+
+    //-------------------------//
+    //END OF BAD TESTS (I HOPE)//
+    //-------------------------//
+
+
+    expect(letterFilter(arrayOfWords2)).toEqual(output2)
+    expect(letterFilter(arrayOfWords2)).toEqual(expect.arrayContaining(output2))
+    //explored toContainEqual, but it seems to pass when it shouldn't.
 
   })
 
@@ -94,11 +141,10 @@ describe("letterFilter",()=>{
 
 // b) Create the function that makes the test pass.
 
-const letterFilter =(array,letter = "a") =>{
-  //filters out an words that, if lowercase, don't include the chosen letter
+//filters out an words that, if lowercase, don't include the chosen letter
   //chosen letter defaults to a
-  const result =  array.filter((word) => word.toLowerCase().includes(letter))
-  return result
+const letterFilter =(array,letter = "a") =>{
+  return  array.filter((word) => word.toLowerCase().includes(letter))
 }
 
 
