@@ -44,9 +44,11 @@ a code library for ruby that we can manage using RubyGems, similar to how we use
 
 ### 5. What are primary keys? Why are they important?
 
-Your answer: primary keys are what we use to identify records in a SQL database table. They let us refer to unique records in a database and let us create relationships between records in different tables (we could use one record's foreign key and match it to another record's primary key).
+**Your answer:**
 
-Researched answer:
+primary keys are what we use to identify records in a SQL database table. They let us refer to unique records in a database and let us create relationships between records in different tables (we could use one record's foreign key and match it to another record's primary key).
+
+**Researched answer:**
 
 primary keys are unique and are often automatically generated. That's why the .find() method can return only one unique result.
 
