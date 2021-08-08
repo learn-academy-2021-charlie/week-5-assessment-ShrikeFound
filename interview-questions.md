@@ -56,7 +56,7 @@ primary keys are unique and are often automatically generated. That's why the .f
 
 Research and define the following terms to the best of your ability.
 
-1. RESTful routes: a set standard routes that we use to connect where the user goes and what an application does:
+_1. RESTful routes:_ a set standard routes that we use to connect where the user goes and what an application does:
 
 - index (/record) -- read in CRUD (all objects)
 - show (/record/:record_id) -- read in CRUD (individual object)
@@ -66,10 +66,10 @@ Research and define the following terms to the best of your ability.
 - update (/record/:record_id) -- update in CRUD (update with new data)
 - destroy (/record/:record_id) -- destroy in CRUD (destroy indiviual object)
 
-2. JSON: javascript object notation, used to send data from an API
+_2. JSON:_ javascript object notation, used to send data from an API
 
-3. ERB: embedded ruby, similar to JSX but is server-side.
+_3. ERB:_ embedded ruby, similar to JSX but is server-side.
 
-4. Params: similar to arguments, are passed as part of an HTTP request.
+_4. Params:_ similar to arguments, are passed as part of an HTTP request.
 
-5. API: application programming interface, lets us interact(interface) with an application by requesting and sending information.
+_5. API:_ application programming interface, lets us interact(interface) with an application by requesting and sending information.
