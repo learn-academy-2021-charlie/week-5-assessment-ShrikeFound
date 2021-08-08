@@ -13,11 +13,13 @@ FROM table
 
 ### 3. What is the command to create a new Rails application with a PostgreSQL database?
 
+```ruby
 rails new application_name -d postgresql
+```
 
 ### 4. What is the command to generate a Rails model for a meals table with columns named breakfast, lunch, and dinner?
 
-```rails
+```ruby
 rails g model Meal breakfast lunch dinner
 ```
 
@@ -27,7 +29,7 @@ a migration is a sort of instruction that you can use to instruct rails in how t
 
 ### 6. What is the command to generate a migration file?
 
-```rails
+```ruby
 rails g migration migration_name
 ```
 
